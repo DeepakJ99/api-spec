@@ -32,6 +32,11 @@ jobs:
             </server>
           </servers>
         </settings>" > ~/.m2/settings.xml
+        
+    - name: Publish to GitHub Packages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: mvn deploy -DskipTests
 
     - name: Build and publish
       run: mvn deploy -DskipTests
